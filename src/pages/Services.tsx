@@ -1,170 +1,91 @@
-import { Code, Database, Cpu, BarChart4, PenTool, Server, Shield, Globe, Smartphone, RefreshCw } from 'lucide-react';
+
+import { Cpu, Code, Database, BarChart4, PenTool, Wand2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageTransition from '@/components/PageTransition';
-import { cn } from '@/lib/utils';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
-interface ServiceProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  features: string[];
-  isHighlighted?: boolean;
-}
-
-const ServiceItem: React.FC<ServiceProps> = ({ icon, title, description, features, isHighlighted = false }) => {
-  return (
-    <div className={cn(
-      "rounded-lg border p-8 transition-all duration-300",
-      isHighlighted 
-        ? "border-primary/20 bg-primary/5 shadow-lg shadow-primary/10" 
-        : "border-border bg-card hover:border-primary/20 hover:shadow-md"
-    )}>
-      <div className={cn(
-        "p-3 rounded-md w-fit mb-6",
-        isHighlighted ? "bg-primary text-white" : "bg-primary/10 text-primary"
-      )}>
-        {icon}
-      </div>
-      
-      <h3 className="text-2xl font-bold mb-3">{title}</h3>
-      <p className="text-muted-foreground mb-6">{description}</p>
-      
-      <ul className="space-y-3 mb-8">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-start">
-            <span className="text-primary mr-2 mt-1">✓</span>
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
-      
-      <Link
-        to="/contact"
-        className={cn(
-          "block text-center py-3 px-6 rounded-md font-medium transition-all",
-          isHighlighted 
-            ? "bg-primary text-white hover:shadow-md hover:shadow-primary/20" 
-            : "border border-primary/20 text-primary hover:bg-primary hover:text-white"
-        )}
-      >
-        Get Started
-      </Link>
-    </div>
-  );
-};
+const services = [
+  {
+    id: 1,
+    title: "Custom AI SaaS Applications",
+    description: "We develop tailored AI-powered SaaS applications that solve specific business challenges. Our solutions blend cutting-edge AI technologies with intuitive user interfaces to deliver exceptional value.",
+    features: [
+      "Custom AI model development",
+      "Scalable cloud infrastructure",
+      "Intuitive user interfaces",
+      "Robust security implementation",
+      "Ongoing maintenance and updates"
+    ],
+    icon: <Cpu className="h-12 w-12 text-primary" />,
+  },
+  {
+    id: 2,
+    title: "AI Integration Services",
+    description: "Seamlessly integrate AI capabilities into your existing systems and workflows. We help businesses leverage the power of artificial intelligence without disrupting their current operations.",
+    features: [
+      "API development and integration",
+      "Legacy system compatibility",
+      "Custom connectors and plugins",
+      "Process automation with AI",
+      "Data pipeline optimization"
+    ],
+    icon: <Code className="h-12 w-12 text-primary" />,
+  },
+  {
+    id: 3,
+    title: "AI-Powered Analytics",
+    description: "Transform your data into actionable insights with our AI-powered analytics solutions. We build custom dashboards and reporting tools that help you make data-driven decisions.",
+    features: [
+      "Predictive analytics models",
+      "Custom dashboard development",
+      "Real-time data processing",
+      "Advanced visualization tools",
+      "Anomaly detection systems"
+    ],
+    icon: <BarChart4 className="h-12 w-12 text-primary" />,
+  },
+  {
+    id: 4,
+    title: "Intelligent Chatbots & Assistants",
+    description: "Create sophisticated conversational AI solutions that enhance customer service, streamline support, and automate routine interactions across multiple channels.",
+    features: [
+      "Natural language processing",
+      "Multi-channel deployment",
+      "Custom knowledge base integration",
+      "Continuous learning capabilities",
+      "Human handoff protocols"
+    ],
+    icon: <Wand2 className="h-12 w-12 text-primary" />,
+  },
+  {
+    id: 5,
+    title: "AI-Enhanced Web Development",
+    description: "Build intelligent, responsive websites that leverage AI for personalization, content management, and user experience optimization.",
+    features: [
+      "AI-driven content personalization",
+      "Intelligent search functionality",
+      "Behavioral analytics integration",
+      "Automated content generation",
+      "Performance optimization"
+    ],
+    icon: <PenTool className="h-12 w-12 text-primary" />,
+  },
+  {
+    id: 6,
+    title: "AI Data Management Solutions",
+    description: "Develop robust data management systems powered by AI that organize, analyze, and optimize your business data for maximum utility and insight.",
+    features: [
+      "Automated data classification",
+      "Intelligent data cleansing",
+      "Pattern recognition systems",
+      "Data governance frameworks",
+      "Secure storage solutions"
+    ],
+    icon: <Database className="h-12 w-12 text-primary" />,
+  }
+];
 
 const Services = () => {
-  const servicesData = [
-    {
-      icon: <Code className="h-6 w-6" />,
-      title: "Website Development & Hosting",
-      description: "Fully customized websites tailored for businesses, with all the essentials included.",
-      features: [
-        "Custom design and development",
-        "Domain registration & hosting",
-        "SEO-optimized structure",
-        "Mobile-friendly responsive design",
-        "Secure HTTPS implementation",
-        "Fast-loading optimized performance",
-        "Basic analytics integration",
-        "Social media integration"
-      ],
-      isHighlighted: false
-    },
-    {
-      icon: <Database className="h-6 w-6" />,
-      title: "CMS Development",
-      description: "Custom-built content management systems for blogs, eCommerce, or business platforms.",
-      features: [
-        "Custom CMS architecture",
-        "User-friendly admin dashboard",
-        "Content scheduling & management",
-        "User role management",
-        "Advanced security measures",
-        "Third-party integrations",
-        "eCommerce capabilities",
-        "Training and documentation"
-      ],
-      isHighlighted: true
-    },
-    {
-      icon: <Cpu className="h-6 w-6" />,
-      title: "AI Automation & Business Solutions",
-      description: "Intelligent solutions that streamline operations and enhance customer experience.",
-      features: [
-        "AI-powered chatbots",
-        "Workflow automation tools",
-        "Data analytics solutions",
-        "Machine learning integration",
-        "Business process optimization",
-        "Custom AI model development",
-        "Integration with existing systems",
-        "Ongoing maintenance and updates"
-      ],
-      isHighlighted: false
-    },
-    {
-      icon: <BarChart4 className="h-6 w-6" />,
-      title: "Digital Marketing & SEO",
-      description: "Comprehensive digital marketing strategies to boost your online presence.",
-      features: [
-        "SEO optimization",
-        "Social media marketing",
-        "Email marketing automation",
-        "Google Ads management",
-        "Content marketing strategy",
-        "Conversion rate optimization",
-        "Analytics and reporting",
-        "Competitor analysis"
-      ],
-      isHighlighted: false
-    },
-    {
-      icon: <PenTool className="h-6 w-6" />,
-      title: "Branding & UI/UX Design",
-      description: "Professional design services to establish a strong brand identity and enhance user experience.",
-      features: [
-        "Logo design",
-        "Brand identity development",
-        "UI/UX design for apps and websites",
-        "Graphic design for marketing",
-        "Design system creation",
-        "User research and testing",
-        "Wireframing and prototyping",
-        "Visual storytelling"
-      ],
-      isHighlighted: false
-    }
-  ];
-  
-  const additionalFeatures = [
-    {
-      icon: <Shield className="h-5 w-5" />,
-      title: "Enhanced Security",
-      description: "Advanced security measures to protect your website from threats and vulnerabilities."
-    },
-    {
-      icon: <Server className="h-5 w-5" />,
-      title: "Cloud Infrastructure",
-      description: "Scalable cloud hosting solutions that grow with your business needs."
-    },
-    {
-      icon: <Globe className="h-5 w-5" />,
-      title: "Multilingual Support",
-      description: "Build websites that cater to global audiences with multilingual capabilities."
-    },
-    {
-      icon: <Smartphone className="h-5 w-5" />,
-      title: "Progressive Web Apps",
-      description: "Create app-like experiences for your users directly through the web browser."
-    },
-    {
-      icon: <RefreshCw className="h-5 w-5" />,
-      title: "Maintenance Plans",
-      description: "Regular updates and support to ensure your website remains secure and functional."
-    }
-  ];
-  
   return (
     <PageTransition>
       {/* Hero Section */}
@@ -172,207 +93,182 @@ const Services = () => {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Our Premium Services
+              AI SaaS Solutions
             </h1>
             <p className="text-lg text-muted-foreground mb-0 max-w-2xl mx-auto">
-              Discover our comprehensive range of web development and AI automation services designed to help your business thrive.
+              Transforming businesses with innovative AI-powered applications and solutions designed for the modern enterprise.
             </p>
           </div>
         </div>
       </section>
       
-      {/* Main Services Section */}
+      {/* Services Section */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {servicesData.map((service, index) => (
-              <ServiceItem
-                key={index}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                features={service.features}
-                isHighlighted={service.isHighlighted}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      {/* Additional Features Section */}
-      <section className="py-16 bg-secondary/30 border-y border-border">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Additional Features</h2>
-            <p className="text-muted-foreground">
-              Enhance your project with these additional features and services.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {additionalFeatures.map((feature, index) => (
-              <div key={index} className="p-6 rounded-lg bg-card border border-border hover:border-primary/20 transition-all duration-300 hover:shadow-sm animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="flex mb-4">
-                  <div className="p-2 rounded-md bg-primary/10 text-primary mr-4">
-                    {feature.icon}
+            {services.map((service) => (
+              <Card key={service.id} className="border border-border bg-card transition-all duration-300 hover:shadow-md hover:border-primary/20">
+                <CardHeader>
+                  <div className="mb-4">
+                    {service.icon}
                   </div>
-                  <h3 className="text-lg font-semibold">{feature.title}</h3>
-                </div>
-                <p className="text-muted-foreground">
-                  {feature.description}
-                </p>
-              </div>
+                  <CardTitle>{service.title}</CardTitle>
+                  <CardDescription className="text-muted-foreground mt-2">
+                    {service.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, index) => (
+                      <li key={index} className="flex items-start">
+                        <div className="mr-2 mt-1 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0"></div>
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                  <Link 
+                    to="/contact" 
+                    className="text-primary font-medium hover:text-primary/80 transition-colors flex items-center"
+                  >
+                    Learn more
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </Link>
+                </CardFooter>
+              </Card>
             ))}
           </div>
         </div>
       </section>
       
       {/* Process Section */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 bg-secondary/30 border-y border-primary/10">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Development Process</h2>
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4">Our AI Development Process</h2>
             <p className="text-muted-foreground">
-              We follow a structured approach to ensure success for every project.
+              We follow a structured, collaborative approach to building AI SaaS solutions that deliver real business value.
             </p>
           </div>
           
-          <div className="relative">
-            {/* Line connecting the steps */}
-            <div className="absolute top-0 bottom-0 left-1/2 w-px bg-border -translate-x-1/2 hidden md:block" />
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="relative">
+              <div className="bg-card border border-border rounded-lg p-6 h-full">
+                <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-4">1</div>
+                <h3 className="text-xl font-semibold mb-3">Discovery & Analysis</h3>
+                <p className="text-muted-foreground">
+                  We deeply understand your business needs and identify how AI can provide the most valuable solutions.
+                </p>
+              </div>
+              <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 hidden md:block">
+                <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M39.0607 13.0607C39.6464 12.4749 39.6464 11.5251 39.0607 10.9393L29.5147 1.3934C28.9289 0.807611 27.9792 0.807611 27.3934 1.3934C26.8076 1.97919 26.8076 2.92893 27.3934 3.51472L35.8787 12L27.3934 20.4853C26.8076 21.0711 26.8076 22.0208 27.3934 22.6066C27.9792 23.1924 28.9289 23.1924 29.5147 22.6066L39.0607 13.0607ZM0 13.5H38V10.5H0V13.5Z" fill="currentColor" className="text-primary/30" />
+                </svg>
+              </div>
+            </div>
             
-            <div className="space-y-12 md:space-y-0">
-              {/* Step 1 */}
-              <div className="md:grid md:grid-cols-2 md:gap-8 items-center relative">
-                <div className="md:text-right animate-fade-in-up">
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wider">Step 1</span>
-                  <h3 className="text-2xl font-bold mt-1 mb-3">Discovery & Requirements</h3>
-                  <p className="text-muted-foreground">
-                    We start by understanding your business goals, target audience, and specific project requirements. This phase includes research, stakeholder interviews, and defining success metrics.
-                  </p>
-                </div>
-                
-                <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">1</div>
-                
-                <div className="mt-6 md:mt-0">
-                  <div className="p-4 rounded-lg bg-primary/5 border border-primary/20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                    <h4 className="font-semibold mb-2">During this phase, we:</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2">✓</span>
-                        <span>Conduct in-depth stakeholder interviews</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2">✓</span>
-                        <span>Research your market and competitors</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2">✓</span>
-                        <span>Define clear project objectives and KPIs</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+            <div className="relative">
+              <div className="bg-card border border-border rounded-lg p-6 h-full">
+                <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-4">2</div>
+                <h3 className="text-xl font-semibold mb-3">AI Strategy & Design</h3>
+                <p className="text-muted-foreground">
+                  We architect the optimal AI solution and create detailed plans for functionality, data flows and user experience.
+                </p>
               </div>
-              
-              {/* Step 2 */}
-              <div className="md:grid md:grid-cols-2 md:gap-8 items-center relative md:mt-20">
-                <div className="order-last md:order-first mt-6 md:mt-0">
-                  <div className="p-4 rounded-lg bg-primary/5 border border-primary/20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                    <h4 className="font-semibold mb-2">During this phase, we:</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2">✓</span>
-                        <span>Create detailed technical specifications</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2">✓</span>
-                        <span>Design wireframes and prototypes</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2">✓</span>
-                        <span>Establish project timeline and milestones</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">2</div>
-                
-                <div className="md:text-right animate-fade-in-up">
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wider">Step 2</span>
-                  <h3 className="text-2xl font-bold mt-1 mb-3">Planning & Design</h3>
-                  <p className="text-muted-foreground">
-                    We create a detailed roadmap and design blueprint for your project. This includes wireframing, UI/UX design, technical planning, and setting clear milestones.
-                  </p>
-                </div>
+              <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 hidden md:block">
+                <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M39.0607 13.0607C39.6464 12.4749 39.6464 11.5251 39.0607 10.9393L29.5147 1.3934C28.9289 0.807611 27.9792 0.807611 27.3934 1.3934C26.8076 1.97919 26.8076 2.92893 27.3934 3.51472L35.8787 12L27.3934 20.4853C26.8076 21.0711 26.8076 22.0208 27.3934 22.6066C27.9792 23.1924 28.9289 23.1924 29.5147 22.6066L39.0607 13.0607ZM0 13.5H38V10.5H0V13.5Z" fill="currentColor" className="text-primary/30" />
+                </svg>
               </div>
-              
-              {/* Step 3 */}
-              <div className="md:grid md:grid-cols-2 md:gap-8 items-center relative md:mt-20">
-                <div className="md:text-right animate-fade-in-up">
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wider">Step 3</span>
-                  <h3 className="text-2xl font-bold mt-1 mb-3">Development & Testing</h3>
-                  <p className="text-muted-foreground">
-                    Our expert team builds your solution with a focus on quality, performance, and best practices. This phase includes regular reviews, rigorous testing, and quality assurance.
-                  </p>
-                </div>
-                
-                <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">3</div>
-                
-                <div className="mt-6 md:mt-0">
-                  <div className="p-4 rounded-lg bg-primary/5 border border-primary/20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                    <h4 className="font-semibold mb-2">During this phase, we:</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2">✓</span>
-                        <span>Implement core functionality and features</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2">✓</span>
-                        <span>Conduct thorough testing and QA</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2">✓</span>
-                        <span>Refine based on client feedback</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+            </div>
+            
+            <div className="relative">
+              <div className="bg-card border border-border rounded-lg p-6 h-full">
+                <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-4">3</div>
+                <h3 className="text-xl font-semibold mb-3">Development & Training</h3>
+                <p className="text-muted-foreground">
+                  Our expert team builds the application while training AI models with industry-specific data for optimal performance.
+                </p>
               </div>
-              
-              {/* Step 4 */}
-              <div className="md:grid md:grid-cols-2 md:gap-8 items-center relative md:mt-20">
-                <div className="order-last md:order-first mt-6 md:mt-0">
-                  <div className="p-4 rounded-lg bg-primary/5 border border-primary/20 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                    <h4 className="font-semibold mb-2">During this phase, we:</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2">✓</span>
-                        <span>Deploy to production environment</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2">✓</span>
-                        <span>Provide training and documentation</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2">✓</span>
-                        <span>Establish ongoing support protocols</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">4</div>
-                
-                <div className="md:text-right animate-fade-in-up">
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wider">Step 4</span>
-                  <h3 className="text-2xl font-bold mt-1 mb-3">Launch & Support</h3>
-                  <p className="text-muted-foreground">
-                    We deploy your solution and provide comprehensive training, documentation, and ongoing support to ensure long-term success.
-                  </p>
-                </div>
+              <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 hidden md:block">
+                <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M39.0607 13.0607C39.6464 12.4749 39.6464 11.5251 39.0607 10.9393L29.5147 1.3934C28.9289 0.807611 27.9792 0.807611 27.3934 1.3934C26.8076 1.97919 26.8076 2.92893 27.3934 3.51472L35.8787 12L27.3934 20.4853C26.8076 21.0711 26.8076 22.0208 27.3934 22.6066C27.9792 23.1924 28.9289 23.1924 29.5147 22.6066L39.0607 13.0607ZM0 13.5H38V10.5H0V13.5Z" fill="currentColor" className="text-primary/30" />
+                </svg>
               </div>
+            </div>
+            
+            <div>
+              <div className="bg-card border border-border rounded-lg p-6 h-full">
+                <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-4">4</div>
+                <h3 className="text-xl font-semibold mb-3">Deployment & Optimization</h3>
+                <p className="text-muted-foreground">
+                  We launch your AI solution with comprehensive support and continuous optimization to ensure long-term success.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4">AI Technologies We Use</h2>
+            <p className="text-muted-foreground">
+              Our solutions leverage cutting-edge AI technologies tailored to your specific business requirements.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="bg-card border border-border p-6 rounded-lg text-center">
+              <div className="h-20 flex items-center justify-center mb-4">
+                <svg viewBox="0 0 24 24" className="h-14 w-14 text-primary" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z" fill="currentColor"/>
+                </svg>
+              </div>
+              <h3 className="font-semibold mb-2">Machine Learning</h3>
+              <p className="text-sm text-muted-foreground">Advanced algorithms that learn from data and improve over time</p>
+            </div>
+            
+            <div className="bg-card border border-border p-6 rounded-lg text-center">
+              <div className="h-20 flex items-center justify-center mb-4">
+                <svg viewBox="0 0 24 24" className="h-14 w-14 text-primary" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M8 9H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M8 13H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <h3 className="font-semibold mb-2">Natural Language Processing</h3>
+              <p className="text-sm text-muted-foreground">Enabling computers to understand and generate human language</p>
+            </div>
+            
+            <div className="bg-card border border-border p-6 rounded-lg text-center">
+              <div className="h-20 flex items-center justify-center mb-4">
+                <svg viewBox="0 0 24 24" className="h-14 w-14 text-primary" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <h3 className="font-semibold mb-2">Computer Vision</h3>
+              <p className="text-sm text-muted-foreground">AI systems that can identify and process images and video</p>
+            </div>
+            
+            <div className="bg-card border border-border p-6 rounded-lg text-center">
+              <div className="h-20 flex items-center justify-center mb-4">
+                <svg viewBox="0 0 24 24" className="h-14 w-14 text-primary" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <h3 className="font-semibold mb-2">Deep Learning</h3>
+              <p className="text-sm text-muted-foreground">Neural networks that mimic human brain structure for complex tasks</p>
             </div>
           </div>
         </div>
@@ -382,16 +278,24 @@ const Services = () => {
       <section className="py-16 bg-primary/5 border-t border-primary/10">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
+            <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Business with AI?</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Contact us today to discuss your project requirements and how we can help your business grow with our web development and AI solutions.
+              Contact us today to discuss how our AI SaaS solutions can help your business achieve its goals.
             </p>
-            <Link
-              to="/contact"
-              className="bg-primary text-white px-8 py-3 rounded-md font-medium transition-all hover:shadow-lg hover:shadow-primary/20"
-            >
-              Request a Quote
-            </Link>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link
+                to="/contact"
+                className="bg-primary text-white px-8 py-3 rounded-md font-medium transition-all hover:shadow-lg hover:shadow-primary/20"
+              >
+                Request a Consultation
+              </Link>
+              <Link
+                to="/pricing"
+                className="border border-primary/20 text-primary px-8 py-3 rounded-md font-medium transition-all hover:bg-primary hover:text-white"
+              >
+                View Pricing
+              </Link>
+            </div>
           </div>
         </div>
       </section>
