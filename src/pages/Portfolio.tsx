@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import PageTransition from '@/components/PageTransition';
 import PortfolioItem from '@/components/PortfolioItem';
@@ -91,7 +90,7 @@ const teamData = [
     name: "Fredrick Saruni",
     role: "Founder & CEO",
     bio: "Visionary AI entrepreneur and tech innovator with expertise in machine learning and web development.",
-    imageUrl: "/lovable-uploads/b3d78849-2c5c-495e-999b-d6fb5078f7fe.png",
+    imageUrl: "/lovable-uploads/0b78033a-2f9f-4d1f-bfae-08c84c8ba8f2.png",
     category: "Leadership",
     link: "#"
   },
