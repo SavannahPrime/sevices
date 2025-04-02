@@ -222,7 +222,7 @@ const Blog = () => {
                 <div className="flex items-center mb-4">
                   <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
                     <img
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                      src="/lovable-uploads/0b78033a-2f9f-4d1f-bfae-08c84c8ba8f2.png"
                       alt="Fredrick Saruni"
                       className="w-full h-full object-cover"
                     />

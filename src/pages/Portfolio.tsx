@@ -93,33 +93,6 @@ const teamData = [
     imageUrl: "/lovable-uploads/0b78033a-2f9f-4d1f-bfae-08c84c8ba8f2.png",
     category: "Leadership",
     link: "#"
-  },
-  {
-    id: 2,
-    name: "Jane Wambui",
-    role: "Co-Founder & CTO",
-    bio: "AI expert with over 10 years of experience in developing cutting-edge machine learning solutions.",
-    imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80",
-    category: "Leadership",
-    link: "#"
-  },
-  {
-    id: 3,
-    name: "David Mwangi",
-    role: "Lead AI Engineer",
-    bio: "Specialized in natural language processing and computer vision with a passion for practical AI applications.",
-    imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-    category: "Engineering",
-    link: "#"
-  },
-  {
-    id: 4,
-    name: "Sarah Ochieng",
-    role: "UX/UI Design Lead",
-    bio: "Creative designer focused on crafting intuitive and accessible user experiences for AI-powered applications.",
-    imageUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1922&q=80",
-    category: "Design",
-    link: "#"
   }
 ];
 
