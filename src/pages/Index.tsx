@@ -1,7 +1,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Database, Cpu, BarChart4, PenTool } from 'lucide-react';
+import { ArrowRight, Code, Database, Cpu, BarChart4, PenTool, MessageSquare } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 import ServiceCard from '@/components/ServiceCard';
 import TestimonialCard from '@/components/TestimonialCard';
@@ -245,6 +245,17 @@ const Index = () => {
               rating={4}
               delay={2}
             />
+          </div>
+          
+          <div className="mt-10 text-center">
+            <Link 
+              to="/reviews" 
+              className="inline-flex items-center text-primary hover:underline"
+            >
+              <MessageSquare className="mr-2 h-4 w-4" />
+              Read more reviews or share your experience
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
