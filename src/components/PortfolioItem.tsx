@@ -11,6 +11,8 @@ interface PortfolioItemProps {
   className?: string;
   isAnimated?: boolean;
   delay?: number;
+  isProfile?: boolean;
+  role?: string;
 }
 
 const PortfolioItem: React.FC<PortfolioItemProps> = ({
@@ -21,7 +23,9 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({
   link,
   className,
   isAnimated = true,
-  delay = 0
+  delay = 0,
+  isProfile = false,
+  role
 }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -34,13 +38,17 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({
       )}
       style={{ animationDelay: isAnimated ? `${delay * 0.1}s` : '0s' }}
     >
-      <div className="relative overflow-hidden aspect-video">
+      <div className={cn(
+        "relative overflow-hidden",
+        isProfile ? "aspect-square" : "aspect-video"
+      )}>
         <img
           src={imageUrl}
           alt={title}
           onLoad={() => setImageLoaded(true)}
           className={cn(
             "w-full h-full object-cover transition-all duration-500",
+            isProfile ? "object-top" : "object-cover",
             "group-hover:scale-105",
             !imageLoaded && "image-blur-loading",
             imageLoaded && "image-loaded"
@@ -58,6 +66,9 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({
         <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
           {title}
         </h3>
+        {role && (
+          <p className="text-primary font-medium text-sm mb-2">{role}</p>
+        )}
         <p className="text-muted-foreground text-sm line-clamp-2">{description}</p>
         
         {link && (
@@ -67,7 +78,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({
             rel="noopener noreferrer"
             className="mt-4 inline-block text-primary font-medium text-sm hover:underline"
           >
-            View Project
+            View Profile
           </a>
         )}
       </div>

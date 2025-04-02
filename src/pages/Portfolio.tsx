@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import PageTransition from '@/components/PageTransition';
 import PortfolioItem from '@/components/PortfolioItem';
 import { cn } from '@/lib/utils';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 // Sample portfolio data
 const portfolioData = [
@@ -83,6 +84,46 @@ const portfolioData = [
 // Extract unique categories for the filter
 const categories = ["All", ...new Set(portfolioData.map(item => item.category))];
 
+// Team Members Data
+const teamData = [
+  {
+    id: 1,
+    name: "Fredrick Saruni",
+    role: "Founder & CEO",
+    bio: "Visionary AI entrepreneur and tech innovator with expertise in machine learning and web development.",
+    imageUrl: "/lovable-uploads/b3d78849-2c5c-495e-999b-d6fb5078f7fe.png",
+    category: "Leadership",
+    link: "#"
+  },
+  {
+    id: 2,
+    name: "Jane Wambui",
+    role: "Co-Founder & CTO",
+    bio: "AI expert with over 10 years of experience in developing cutting-edge machine learning solutions.",
+    imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80",
+    category: "Leadership",
+    link: "#"
+  },
+  {
+    id: 3,
+    name: "David Mwangi",
+    role: "Lead AI Engineer",
+    bio: "Specialized in natural language processing and computer vision with a passion for practical AI applications.",
+    imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+    category: "Engineering",
+    link: "#"
+  },
+  {
+    id: 4,
+    name: "Sarah Ochieng",
+    role: "UX/UI Design Lead",
+    bio: "Creative designer focused on crafting intuitive and accessible user experiences for AI-powered applications.",
+    imageUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1922&q=80",
+    category: "Design",
+    link: "#"
+  }
+];
+
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredProjects, setFilteredProjects] = useState(portfolioData);
@@ -120,9 +161,44 @@ const Portfolio = () => {
         </div>
       </section>
       
+      {/* Team Section - New Addition */}
+      <section className="py-16 bg-secondary/30 border-b border-border">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Meet Our Team</h2>
+            <p className="text-muted-foreground">
+              The brilliant minds behind our innovative AI solutions and web development expertise.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {teamData.map((member, index) => (
+              <PortfolioItem
+                key={member.id}
+                title={member.name}
+                description={member.bio}
+                imageUrl={member.imageUrl}
+                category={member.category}
+                link={member.link}
+                delay={index}
+                isProfile={true}
+                role={member.role}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      
       {/* Portfolio Section */}
       <section className="py-16 md:py-24">
         <div className="container-custom">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Our Projects</h2>
+            <p className="text-muted-foreground">
+              Explore the innovative solutions we've developed for our clients.
+            </p>
+          </div>
+          
           {/* Category Filters */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             {categories.map((category, index) => (
