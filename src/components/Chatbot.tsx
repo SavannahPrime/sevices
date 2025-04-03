@@ -82,9 +82,11 @@ const Chatbot = () => {
     setIsLoading(true);
     
     try {
-      // Use the exact webhook URL format as specified in requirements
-      // Including sessionId as a query parameter
-      const response = await fetch(`http://localhost:5678/webhook-test/66d55d13-bdff-451e-b486-bd2032884686?sessionId=${sessionId}`, {
+      // Use the GET webhook URL with user message and session ID as query parameters
+      const encodedMessage = encodeURIComponent(userMessage.text);
+      const url = `http://localhost:5678/webhook-test/66d55d13-bdff-451e-b486-bd2032884686?sessionId=${sessionId}&message=${encodedMessage}`;
+      
+      const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
