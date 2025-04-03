@@ -14,6 +14,19 @@ interface Message {
   timestamp: Date;
 }
 
+// Predefined responses for when webhook is unavailable
+const fallbackResponses = [
+  "I'm sorry, I can't connect to my services right now. How else can I help you?",
+  "I understand you need assistance. Please try calling our support team at 555-123-4567.",
+  "That's an interesting question. When our services are back online, I'll be able to provide a more detailed answer.",
+  "I'd be happy to help with that once my connection is restored. In the meantime, you can check our FAQ section.",
+  "I'm still learning. For immediate assistance, please email support@example.com.",
+];
+
+const getRandomFallbackResponse = () => {
+  return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
+};
+
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -69,7 +82,8 @@ const Chatbot = () => {
     setIsLoading(true);
     
     try {
-      // Send message to webhook
+      // Use the exact webhook URL format as specified in requirements
+      // Including sessionId as a query parameter
       const response = await fetch(`http://localhost:5678/webhook-test/66d55d13-bdff-451e-b486-bd2032884686?sessionId=${sessionId}`, {
         method: 'GET',
         headers: {
@@ -94,17 +108,16 @@ const Chatbot = () => {
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
       console.error('Error fetching bot response:', error);
-      toast.error('Failed to get a response. Please try again.');
       
-      // Add error message
-      const errorMessage = {
+      // Use fallback response when webhook is unavailable
+      const fallbackMessage = {
         id: generateMessageId(),
-        text: "I'm sorry, I'm having trouble connecting to my services right now. Please try again later.",
+        text: getRandomFallbackResponse(),
         sender: 'bot',
         timestamp: new Date()
       };
       
-      setMessages(prev => [...prev, errorMessage]);
+      setMessages(prev => [...prev, fallbackMessage]);
     } finally {
       setIsLoading(false);
     }
