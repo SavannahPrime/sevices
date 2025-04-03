@@ -121,42 +121,42 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-40">
+    <div className="fixed bottom-4 right-4 z-40">
       {/* Chat window */}
       {isOpen && (
-        <Card className="w-80 sm:w-96 h-[480px] mb-4 shadow-lg border border-border bg-background flex flex-col">
+        <Card className="w-72 sm:w-80 h-96 mb-2 shadow-lg border border-border bg-background flex flex-col">
           {/* Chat header */}
-          <div className="flex items-center justify-between p-3 border-b border-border bg-card">
-            <div className="flex items-center gap-2">
-              <Avatar className="h-8 w-8 bg-primary">
-                <Bot className="text-primary-foreground" />
+          <div className="flex items-center justify-between p-2 border-b border-border bg-card">
+            <div className="flex items-center gap-1.5">
+              <Avatar className="h-6 w-6 bg-primary">
+                <Bot className="h-3 w-3 text-primary-foreground" />
               </Avatar>
               <div>
-                <h3 className="font-semibold text-sm">Moran</h3>
-                <p className="text-xs text-muted-foreground">Virtual Assistant</p>
+                <h3 className="font-medium text-xs">Moran</h3>
+                <p className="text-[10px] text-muted-foreground">Virtual Assistant</p>
               </div>
             </div>
-            <Button variant="ghost" size="icon" onClick={toggleChat} className="h-8 w-8">
-              <X className="h-5 w-5" />
+            <Button variant="ghost" size="icon" onClick={toggleChat} className="h-6 w-6">
+              <X className="h-3 w-3" />
             </Button>
           </div>
           
           {/* Chat messages */}
-          <CardContent className="flex-grow overflow-y-auto p-4 flex flex-col gap-3 bg-white/5">
+          <CardContent className="flex-grow overflow-y-auto p-3 flex flex-col gap-2 bg-white/5">
             {messages.map((msg) => (
               <div 
                 key={msg.id}
                 className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-[80%] px-4 py-2 rounded-lg ${
+                  className={`max-w-[80%] px-3 py-1.5 rounded-lg text-xs ${
                     msg.sender === 'user'
                       ? 'bg-primary text-primary-foreground rounded-br-none'
                       : 'bg-muted text-foreground rounded-bl-none'
                   }`}
                 >
-                  <p className="text-sm">{msg.text}</p>
-                  <p className="text-[10px] mt-1 opacity-70">
+                  <p>{msg.text}</p>
+                  <p className="text-[8px] mt-0.5 opacity-70">
                     {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </p>
                 </div>
@@ -164,8 +164,8 @@ const Chatbot = () => {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="max-w-[80%] px-4 py-2 rounded-lg bg-muted text-foreground rounded-bl-none">
-                  <Loader2 className="h-5 w-5 animate-spin" />
+                <div className="max-w-[80%] px-3 py-1.5 rounded-lg bg-muted text-foreground rounded-bl-none">
+                  <Loader2 className="h-3 w-3 animate-spin" />
                 </div>
               </div>
             )}
@@ -173,21 +173,22 @@ const Chatbot = () => {
           </CardContent>
           
           {/* Chat input */}
-          <div className="p-3 border-t border-border flex gap-2">
+          <div className="p-2 border-t border-border flex gap-1">
             <Input
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Type your message..."
               disabled={isLoading}
-              className="flex-grow"
+              className="flex-grow h-8 text-xs"
             />
             <Button 
               onClick={handleSendMessage} 
               disabled={!inputValue.trim() || isLoading}
               size="icon"
+              className="h-8 w-8"
             >
-              <Send className="h-4 w-4" />
+              <Send className="h-3 w-3" />
             </Button>
           </div>
         </Card>
@@ -197,10 +198,10 @@ const Chatbot = () => {
       {!isOpen && (
         <Button 
           onClick={toggleChat}
-          size="lg" 
-          className="rounded-full h-14 w-14 shadow-lg flex items-center justify-center"
+          size="icon" 
+          className="rounded-full h-10 w-10 shadow-sm"
         >
-          <Bot className="h-6 w-6" />
+          <Bot className="h-5 w-5" />
         </Button>
       )}
     </div>
