@@ -1,11 +1,12 @@
-import { CheckCircle, XCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { CheckCircle, XCircle, Link as IconLink } from 'lucide-react'; // Renamed `Link` from `lucide-react` to `IconLink`
+import { Link } from 'react-router-dom'; // Kept `Link` from `react-router-dom`
 import PageTransition from '@/components/PageTransition';
 import { cn } from '@/lib/utils';
 
 interface PricingTierProps {
   title: string;
-  price: string;
+  nowPrice: string;
+  wasPrice: string;
   description: string;
   features: {
     included: string[];
@@ -18,7 +19,8 @@ interface PricingTierProps {
 
 const PricingTier: React.FC<PricingTierProps> = ({
   title,
-  price,
+  nowPrice,
+  wasPrice,
   description,
   features,
   buttonText,
@@ -26,12 +28,14 @@ const PricingTier: React.FC<PricingTierProps> = ({
   isPopular = false
 }) => {
   return (
-    <div className={cn(
-      "rounded-lg border relative transition-all duration-300 hover:shadow-lg p-8",
-      isPopular 
-        ? "border-primary shadow-md shadow-primary/10 bg-primary/5 z-10" 
-        : "border-border bg-card hover:border-primary/20"
-    )}>
+    <div
+      className={cn(
+        'relative rounded-lg border transition-all duration-300 hover:shadow-lg p-8 bg-white',
+        isPopular
+          ? 'border-primary shadow-md shadow-primary/10 bg-primary/5 z-10'
+          : 'border-border hover:border-primary/20'
+      )}
+    >
       {isPopular && (
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <span className="bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">
@@ -39,22 +43,19 @@ const PricingTier: React.FC<PricingTierProps> = ({
           </span>
         </div>
       )}
-      
-      <h3 className="text-2xl font-bold mb-3">{title}</h3>
-      
-      <div className="mb-4">
-        {!price.includes("KSH") ? (
-          <>
-            <span className="text-4xl font-bold text-foreground">{price}</span>
-            {price !== "Custom" && <span className="text-muted-foreground ml-1">KSH</span>}
-          </>
-        ) : (
-          <span className="text-3xl font-bold text-foreground">{price}</span>
-        )}
+
+      <h3 className="text-2xl font-bold mb-4 text-center">{title}</h3>
+
+      <div className="mb-6 text-center">
+        <div className="flex justify-center items-center space-x-2">
+          <span className="text-4xl font-bold text-primary">{nowPrice}</span>
+          <span className="text-lg text-muted-foreground line-through">{wasPrice}</span>
+        </div>
+        <span className="text-sm text-muted-foreground">Limited Easter Offer</span>
       </div>
-      
-      <p className="text-muted-foreground mb-6">{description}</p>
-      
+
+      <p className="text-muted-foreground mb-6 text-center">{description}</p>
+
       <ul className="space-y-3 mb-8">
         {features.included.map((feature, index) => (
           <li key={`included-${index}`} className="flex items-start">
@@ -62,7 +63,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
             <span>{feature}</span>
           </li>
         ))}
-        
+
         {features.excluded?.map((feature, index) => (
           <li key={`excluded-${index}`} className="flex items-start text-muted-foreground">
             <XCircle className="h-5 w-5 text-muted-foreground flex-shrink-0 mr-2" />
@@ -70,14 +71,14 @@ const PricingTier: React.FC<PricingTierProps> = ({
           </li>
         ))}
       </ul>
-      
+
       <Link
         to={buttonLink}
         className={cn(
-          "block text-center py-3 px-6 rounded-md font-medium transition-all",
-          isPopular 
-            ? "bg-primary text-white hover:shadow-md hover:shadow-primary/20" 
-            : "border border-primary/20 text-primary hover:bg-primary hover:text-white"
+          'block text-center py-3 px-6 rounded-md font-medium transition-all',
+          isPopular
+            ? 'bg-primary text-white hover:shadow-md hover:shadow-primary/20'
+            : 'border border-primary/20 text-primary hover:bg-primary hover:text-white'
         )}
       >
         {buttonText}
@@ -89,70 +90,69 @@ const PricingTier: React.FC<PricingTierProps> = ({
 const Pricing = () => {
   const pricingTiers = [
     {
-      title: "Basic Website",
-      price: "25,000 - 40,000 KSH",
-      description: "Perfect for small businesses looking to establish a professional online presence.",
+      title: 'Basic Website',
+      nowPrice: '25,000 KSH',
+      wasPrice: '40,000 KSH',
+      description: 'Perfect for small businesses looking to establish a professional online presence.',
       features: {
         included: [
-          "Custom design and development",
-          "Domain registration & hosting",
-          "SEO-optimized structure",
-          "Mobile-friendly responsive design",
-          "Secure HTTPS implementation",
-          "Fast-loading optimized performance",
-          "Basic analytics integration",
-          "Social media integration"
+          'Custom design and development',
+          'Domain registration & hosting',
+          'SEO-optimized structure',
+          'Mobile-friendly responsive design',
+          'Secure HTTPS implementation',
+          'Fast-loading optimized performance',
+          'Basic analytics integration',
+          'Social media integration'
         ],
-        excluded: [
-          "Advanced CMS features",
-          "AI-powered automation",
-          "Custom integrations"
-        ]
+        excluded: ['Advanced CMS features', 'AI-powered automation', 'Custom integrations']
       },
-      buttonText: "Get Started",
-      buttonLink: "/contact",
+      buttonText: 'Get Started',
+      buttonLink: '/contact',
       isPopular: false
     },
     {
-      title: "Advanced Website",
-      price: "45,000 - 70,000 KSH",
-      description: "Comprehensive solution for businesses that need advanced content management capabilities.",
+      title: 'Advanced Website',
+      nowPrice: '50,000 KSH',
+      wasPrice: '70,000 KSH',
+      description: 'Comprehensive solution for businesses that need advanced content management capabilities.',
       features: {
         included: [
-          "Custom CMS architecture",
-          "User-friendly admin dashboard",
-          "Content scheduling & management",
-          "User role management",
-          "Advanced security measures",
-          "Third-party integrations",
-          "eCommerce capabilities",
-          "Training and documentation",
-          "3 months of technical support"
+          'Custom CMS architecture',
+          'User-friendly admin dashboard',
+          'Content scheduling & management',
+          'User role management',
+          'Advanced security measures',
+          'Third-party integrations',
+          'eCommerce capabilities',
+          'Training and documentation',
+          '3 months of technical support'
         ]
       },
-      buttonText: "Get Started",
-      buttonLink: "/contact",
+      buttonText: 'Get Started',
+      buttonLink: '/contact',
       isPopular: true
     },
     {
-      title: "AI Solutions",
-      price: "Custom",
-      description: "Tailored AI automation solutions for businesses looking to streamline operations.",
+      title: 'AI Solutions',
+      nowPrice: 'Custom',
+      wasPrice: 'Custom',
+      description: 'Tailored AI automation solutions for businesses looking to streamline operations.',
       features: {
         included: [
-          "Custom AI solution development",
-          "Integration with existing systems",
-          "AI-powered chatbots",
-          "Workflow automation",
-          "Data analytics dashboards",
-          "Machine learning implementation",
-          "Personalized consultation",
-          "Comprehensive training",
-          "Ongoing support and maintenance"
+          'Custom AI solution development',
+          'Integration with existing systems',
+          'AI-powered chatbots',
+          'Workflow automation',
+          'Data analytics dashboards',
+          'Machine learning implementation',
+          'Personalized consultation',
+          'Comprehensive training',
+          'Ongoing support and maintenance'
         ]
       },
-      buttonText: "Request Quote",
-      buttonLink: "/contact",
+      buttonText: 'Request Quote',
+      buttonLink: '/contact',
       isPopular: false
     }
   ];
@@ -191,7 +191,7 @@ const Pricing = () => {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Transparent & Flexible Pricing
+              Easter Offer - Transparent & Flexible Pricing
             </h1>
             <p className="text-lg text-muted-foreground mb-0 max-w-2xl mx-auto">
               Choose the plan that fits your business needs. All plans include our commitment to quality and excellence.
@@ -208,7 +208,8 @@ const Pricing = () => {
               <PricingTier
                 key={index}
                 title={tier.title}
-                price={tier.price}
+                nowPrice={tier.nowPrice}
+                wasPrice={tier.wasPrice}
                 description={tier.description}
                 features={tier.features}
                 buttonText={tier.buttonText}
@@ -321,6 +322,20 @@ const Pricing = () => {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* Dynamic Pricing Section */}
+      <section className="py-16 text-center">
+        <h2 className="text-3xl font-bold mb-6">Looking for a Custom Quote?</h2>
+        <p className="text-lg text-muted-foreground mb-4">
+          Use our dynamic pricing calculator to estimate the cost of your project.
+        </p>
+        <Link
+          to="/dynamic-pricing"
+          className="bg-primary text-white px-6 py-3 rounded-md font-medium hover:shadow-lg"
+        >
+          Go to Dynamic Pricing
+        </Link>
       </section>
     </PageTransition>
   );

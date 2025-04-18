@@ -1,9 +1,8 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
@@ -16,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Chatbot from "./components/Chatbot";
+import DynamicPricing from "./pages/DynamicPricing"; // Import the new page
 
 const queryClient = new QueryClient();
 
@@ -34,7 +34,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <Router>
         <ScrollToTop />
         <div className="flex flex-col min-h-screen">
           <Navbar />
@@ -47,13 +47,14 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/reviews" element={<Reviews />} />
+              <Route path="/dynamic-pricing" element={<DynamicPricing />} /> {/* Add this */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />
           <Chatbot />
         </div>
-      </BrowserRouter>
+      </Router>
     </TooltipProvider>
   </QueryClientProvider>
 );
