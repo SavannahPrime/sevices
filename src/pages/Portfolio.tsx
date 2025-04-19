@@ -93,6 +93,15 @@ const teamData = [
     imageUrl: "/lovable-uploads/0b78033a-2f9f-4d1f-bfae-08c84c8ba8f2.png",
     category: "Leadership",
     link: "#"
+  },
+  {
+    id: 2,
+    name: "Alex Weru",
+    role: "Product Manager & UI/UX Designer",
+    bio: "Expert in crafting user-centric designs and managing product lifecycles to deliver exceptional user experiences.",
+    imageUrl: "/public/lovable-uploads/Alex.jpg", // Add the image here
+    category: "Design",
+    link: "#"
   }
 ];
 
@@ -133,7 +142,7 @@ const Portfolio = () => {
         </div>
       </section>
       
-      {/* Team Section - New Addition */}
+      {/* Team Section */}
       <section className="py-16 bg-secondary/30 border-b border-border">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center mb-12">
