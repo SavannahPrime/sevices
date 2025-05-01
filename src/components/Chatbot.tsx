@@ -10,7 +10,7 @@ import { toast } from 'sonner';
 interface Message {
   id: string;
   text: string;
-  sender: 'user' | 'bot';
+  sender: 'user' | 'bot'; // This must be a union type with literal values
   timestamp: Date;
 }
 
@@ -70,10 +70,10 @@ const Chatbot = () => {
     if (!inputValue.trim()) return;
     
     // Add user message to chat
-    const userMessage = {
+    const userMessage: Message = {
       id: generateMessageId(),
       text: inputValue,
-      sender: 'user',
+      sender: 'user', // Fixed: Using the literal 'user'
       timestamp: new Date()
     };
     
@@ -100,10 +100,10 @@ const Chatbot = () => {
       const data = await response.json();
       
       // Add bot response to chat
-      const botMessage = {
+      const botMessage: Message = {
         id: generateMessageId(),
         text: data?.message || "I'm sorry, I couldn't process your request.",
-        sender: 'bot',
+        sender: 'bot', // Fixed: Using the literal 'bot'
         timestamp: new Date()
       };
       
@@ -112,10 +112,10 @@ const Chatbot = () => {
       console.error('Error fetching bot response:', error);
       
       // Use fallback response when webhook is unavailable
-      const fallbackMessage = {
+      const fallbackMessage: Message = {
         id: generateMessageId(),
         text: getRandomFallbackResponse(),
-        sender: 'bot',
+        sender: 'bot', // Fixed: Using the literal 'bot'
         timestamp: new Date()
       };
       
