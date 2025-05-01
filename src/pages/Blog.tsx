@@ -4,7 +4,10 @@ import { BookOpen, Calendar, User, Tag, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageTransition from '@/components/PageTransition';
 import BlogCard from '@/components/BlogCard';
+import BlogHeroSection from '@/components/BlogHeroSection';
+import ImageWithFallback from '@/components/ui/image-with-fallback';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 const blogPosts = [
   {
@@ -13,6 +16,7 @@ const blogPosts = [
     excerpt: "Explore how artificial intelligence is revolutionizing SaaS applications and creating new opportunities for businesses of all sizes.",
     date: "June 15, 2024",
     author: "Fredrick Saruni",
+    authorImage: "/lovable-uploads/0b78033a-2f9f-4d1f-bfae-08c84c8ba8f2.png",
     category: "AI Development",
     tags: ["AI", "SaaS", "Technology"],
     featuredImage: "https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80",
@@ -24,6 +28,7 @@ const blogPosts = [
     excerpt: "Discover how SavannahPrime's custom AI backend solutions are helping businesses automate processes and gain valuable insights.",
     date: "June 10, 2024",
     author: "Fredrick Saruni",
+    authorImage: "/lovable-uploads/0b78033a-2f9f-4d1f-bfae-08c84c8ba8f2.png",
     category: "AI & Automation",
     tags: ["AI Backend", "Machine Learning", "Business"],
     featuredImage: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80",
@@ -35,6 +40,7 @@ const blogPosts = [
     excerpt: "Learn about our methodical approach to developing scalable, reliable AI SaaS products that deliver real value to users.",
     date: "June 5, 2024",
     author: "Fredrick Saruni",
+    authorImage: "/lovable-uploads/0b78033a-2f9f-4d1f-bfae-08c84c8ba8f2.png",
     category: "SaaS Development",
     tags: ["SaaS", "AI Development", "Scalability"],
     featuredImage: "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80",
@@ -46,6 +52,7 @@ const blogPosts = [
     excerpt: "Why a great user experience is crucial for the adoption and success of AI-powered SaaS applications.",
     date: "May 28, 2024",
     author: "Fredrick Saruni",
+    authorImage: "/lovable-uploads/0b78033a-2f9f-4d1f-bfae-08c84c8ba8f2.png",
     category: "UI/UX Design",
     tags: ["UX", "AI Applications", "Design"],
     featuredImage: "https://images.unsplash.com/photo-1596742578443-7682ef7b7266?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80",
@@ -57,6 +64,7 @@ const blogPosts = [
     excerpt: "Essential security practices for developing and maintaining AI-powered SaaS applications that protect user data and privacy.",
     date: "May 20, 2024",
     author: "Fredrick Saruni",
+    authorImage: "/lovable-uploads/0b78033a-2f9f-4d1f-bfae-08c84c8ba8f2.png",
     category: "AI Security",
     tags: ["Security", "AI", "Best Practices"],
     featuredImage: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80",
@@ -68,6 +76,7 @@ const blogPosts = [
     excerpt: "How to seamlessly integrate AI SaaS solutions with your existing business systems for maximum efficiency and ROI.",
     date: "May 15, 2024",
     author: "Fredrick Saruni",
+    authorImage: "/lovable-uploads/0b78033a-2f9f-4d1f-bfae-08c84c8ba8f2.png",
     category: "System Integration",
     tags: ["Integration", "AI Solutions", "Business Systems"],
     featuredImage: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80",
@@ -101,18 +110,7 @@ const Blog = () => {
   return (
     <PageTransition>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-36 md:pb-20 bg-primary/5 border-b border-primary/10">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              AI SaaS Insights by Fredrick Saruni
-            </h1>
-            <p className="text-lg text-muted-foreground mb-0 max-w-2xl mx-auto">
-              Expert perspectives on AI development, SaaS solutions, and the future of AI-powered business applications.
-            </p>
-          </div>
-        </div>
-      </section>
+      <BlogHeroSection />
       
       {/* Blog Content Section */}
       <section className="py-16 md:py-24 bg-background">
@@ -120,24 +118,15 @@ const Blog = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Main Content */}
             <div className="lg:col-span-2">
-              {/* Search */}
-              <div className="relative mb-8">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder="Search articles..."
-                  className="w-full pl-10 pr-4 py-3 rounded-md border border-border bg-card focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </div>
-              
               {/* Category Pills (Mobile) */}
               <div className="mb-8 overflow-x-auto pb-2 lg:hidden">
                 <div className="flex space-x-2 min-w-max">
-                  {categories.map((category) => (
-                    <button
+                  {categories.map((category, idx) => (
+                    <motion.button
                       key={category}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: idx * 0.05 }}
                       onClick={() => setSelectedCategory(category)}
                       className={cn(
                         "px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap",
@@ -147,7 +136,7 @@ const Blog = () => {
                       )}
                     >
                       {category}
-                    </button>
+                    </motion.button>
                   ))}
                 </div>
               </div>
@@ -170,8 +159,16 @@ const Blog = () => {
               {/* Blog Posts Grid */}
               {filteredPosts.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {filteredPosts.map((post) => (
-                    <BlogCard key={post.id} post={post} />
+                  {filteredPosts.map((post, idx) => (
+                    <motion.div
+                      key={post.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: idx * 0.1 }}
+                    >
+                      <BlogCard post={post} />
+                    </motion.div>
                   ))}
                 </div>
               ) : (
@@ -195,7 +192,13 @@ const Blog = () => {
               
               {/* Pagination */}
               {filteredPosts.length > 0 && (
-                <div className="flex justify-center items-center mt-12 space-x-2">
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="flex justify-center items-center mt-12 space-x-2"
+                >
                   <button className="px-4 py-2 rounded-md border border-border hover:bg-secondary transition-colors">
                     Previous
                   </button>
@@ -211,17 +214,23 @@ const Blog = () => {
                   <button className="px-4 py-2 rounded-md border border-border hover:bg-secondary transition-colors">
                     Next
                   </button>
-                </div>
+                </motion.div>
               )}
             </div>
             
             {/* Sidebar */}
             <div className="lg:col-span-1">
               {/* Author Bio */}
-              <div className="mb-8 bg-card border border-border rounded-lg p-6">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="mb-8 bg-card border border-border rounded-lg p-6"
+              >
                 <div className="flex items-center mb-4">
                   <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
-                    <img
+                    <ImageWithFallback
                       src="/lovable-uploads/0b78033a-2f9f-4d1f-bfae-08c84c8ba8f2.png"
                       alt="Fredrick Saruni"
                       className="w-full h-full object-cover"
@@ -243,10 +252,16 @@ const Blog = () => {
                     Twitter
                   </a>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Categories (Desktop) */}
-              <div className="hidden lg:block mb-8 bg-card border border-border rounded-lg p-6">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="hidden lg:block mb-8 bg-card border border-border rounded-lg p-6"
+              >
                 <h3 className="text-lg font-semibold mb-4">Categories</h3>
                 <ul className="space-y-2">
                   {categories.map((category) => (
@@ -265,28 +280,41 @@ const Blog = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
               
               {/* Popular Tags */}
-              <div className="mb-8 bg-card border border-border rounded-lg p-6">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="mb-8 bg-card border border-border rounded-lg p-6"
+              >
                 <h3 className="text-lg font-semibold mb-4">Popular Tags</h3>
                 <div className="flex flex-wrap gap-2">
-                  {Array.from(new Set(blogPosts.flatMap(post => post.tags))).map((tag) => (
+                  {Array.from(new Set(blogPosts.flatMap(post => post.tags))).map((tag, idx) => (
                     <button
                       key={tag}
                       onClick={() => setSearchQuery(tag)}
                       className="px-3 py-1 bg-secondary rounded-full text-sm hover:bg-primary/10 hover:text-primary transition-colors"
+                      style={{ animationDelay: `${idx * 0.05}s` }}
                     >
                       {tag}
                     </button>
                   ))}
                 </div>
-              </div>
+              </motion.div>
               
               {/* Featured Post */}
-              <div className="mb-8 bg-card border border-border rounded-lg overflow-hidden">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="mb-8 bg-card border border-border rounded-lg overflow-hidden"
+              >
                 <div className="h-48 overflow-hidden">
-                  <img
+                  <ImageWithFallback
                     src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                     alt="Featured post"
                     className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
@@ -309,10 +337,16 @@ const Blog = () => {
                     <span>Fredrick Saruni</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
               
               {/* Newsletter Signup */}
-              <div className="bg-primary/5 border border-primary/20 rounded-lg p-6">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="bg-primary/5 border border-primary/20 rounded-lg p-6"
+              >
                 <h3 className="text-lg font-semibold mb-2">Subscribe to Our Newsletter</h3>
                 <p className="text-muted-foreground text-sm mb-4">
                   Get the latest AI SaaS insights and updates delivered directly to your inbox.
@@ -330,7 +364,7 @@ const Blog = () => {
                 <p className="text-xs text-muted-foreground mt-3">
                   By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
