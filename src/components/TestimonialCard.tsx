@@ -2,16 +2,16 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 interface TestimonialCardProps {
   quote: string;
   name: string;
   company: string;
   rating: number;
-  profileImage?: string;
-  className?: string;
-  isAnimated?: boolean;
   delay?: number;
+  className?: string;
+  image?: string;
 }
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
@@ -19,63 +19,51 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   name,
   company,
   rating,
-  profileImage,
+  delay = 0,
   className,
-  isAnimated = true,
-  delay = 0
+  image
 }) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5, delay: delay * 0.2 }}
       className={cn(
-        "glass-card rounded-lg p-6 relative",
-        isAnimated && "fade-up stagger-item",
+        "rounded-lg bg-card border border-border/50 p-6 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300",
         className
       )}
-      style={{ animationDelay: isAnimated ? `${delay * 0.1}s` : '0s' }}
     >
-      {/* Quotation mark */}
-      <div className="absolute top-4 right-4 text-5xl leading-none text-primary/10 font-serif">
-        "
-      </div>
-      
-      {/* Rating */}
-      <div className="flex mb-4">
-        {[...Array(5)].map((_, i) => (
+      <div className="mb-4">
+        {Array(5).fill(0).map((_, i) => (
           <Star
             key={i}
             className={cn(
-              "w-4 h-4",
-              i < rating ? "text-primary fill-primary" : "text-muted-foreground"
+              "inline-block w-4 h-4 mr-1",
+              i < rating ? "text-yellow-500 fill-yellow-500" : "text-gray-300"
             )}
           />
         ))}
       </div>
       
-      {/* Quote */}
-      <p className="text-foreground/90 mb-6 relative z-10">"{quote}"</p>
+      <blockquote className="text-foreground italic mb-6 relative">
+        <span className="absolute top-0 left-0 text-6xl text-primary/20 -z-10 -mt-6 -ml-2">"</span>
+        {quote}
+        <span className="absolute bottom-0 right-0 text-6xl text-primary/20 -z-10 -mb-8 -mr-2">"</span>
+      </blockquote>
       
-      {/* Author info */}
       <div className="flex items-center">
-        {profileImage ? (
-          <div className="w-12 h-12 rounded-full overflow-hidden mr-4 border border-border">
-            <img
-              src={profileImage}
-              alt={name}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ) : (
-          <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mr-4 font-semibold">
-            {name.charAt(0)}
+        {image && (
+          <div className="mr-3 h-10 w-10 rounded-full overflow-hidden border border-primary/20">
+            <img src={image} alt={name} className="h-full w-full object-cover" />
           </div>
         )}
-        
         <div>
-          <h4 className="font-semibold">{name}</h4>
-          <p className="text-sm text-muted-foreground">{company}</p>
+          <div className="font-semibold">{name}</div>
+          <div className="text-sm text-muted-foreground">{company}</div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
