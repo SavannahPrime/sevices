@@ -11,6 +11,7 @@ import AILab from '@/components/AILab';
 import StatsSection from '@/components/StatsSection';
 import ServiceCard from '@/components/ServiceCard';
 import { Cpu, Code, Database, BarChart4, PenTool, MessageSquare as MessageIcon } from 'lucide-react';
+import ImageWithFallback from '@/components/ui/image-with-fallback';
 
 const Index = () => {
   return (
@@ -29,87 +30,87 @@ const Index = () => {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              Premium Solutions
+              AI Solutions for Kenya
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              AI & Automation <span className="gradient-text">Services</span>
+              AI & Automation <span className="gradient-text">Services</span> for East African Businesses
             </h2>
             <p className="text-lg text-muted-foreground mb-0 max-w-3xl mx-auto">
-              We offer a comprehensive range of AI and automation solutions to transform 
-              your business operations and drive growth.
+              We offer comprehensive AI and automation solutions tailored specifically for 
+              the Kenyan market, helping local businesses stay competitive in the digital era.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ServiceCard
-              title="AI Application Development"
-              description="Custom AI applications tailored for your business needs, from intelligent chatbots to predictive analytics systems."
-              icon={<Cpu className="h-6 w-6" />}
-              link="/services"
-              features={[
-                "Custom AI model development",
-                "Intelligent automation workflows",
-                "Scalable cloud infrastructure"
-              ]}
-            />
-            
-            <ServiceCard
-              title="ML Solutions & Integration"
-              description="Machine learning solutions that integrate seamlessly with your existing systems and provide actionable insights."
-              icon={<Code className="h-6 w-6" />}
-              link="/services"
-              features={[
-                "Custom ML model training",
-                "API development and integration",
-                "Data pipeline optimization"
-              ]}
-            />
-            
-            <ServiceCard
-              title="Data Analytics & AI"
-              description="Transform your raw data into valuable business intelligence with our advanced analytics and AI solutions."
-              icon={<Database className="h-6 w-6" />}
-              link="/services"
-              features={[
-                "Predictive analytics models",
-                "Real-time data processing",
-                "Custom dashboard development"
-              ]}
-            />
-            
-            <ServiceCard
-              title="Conversational AI"
-              description="Create sophisticated conversational AI solutions for customer service, sales, and internal operations."
+              title="Intelligent Chatbots"
+              description="Our Nairobi-developed chatbots understand Swahili and local contexts, delivering 24/7 customer service with seamless WhatsApp and M-Pesa integration."
               icon={<MessageIcon className="h-6 w-6" />}
               link="/services"
               features={[
-                "Natural language processing",
-                "Custom knowledge base integration",
-                "Multi-channel deployment"
+                "Swahili language support",
+                "M-Pesa integration",
+                "WhatsApp compatibility"
               ]}
             />
             
             <ServiceCard
-              title="Business Intelligence"
-              description="Advanced BI solutions that leverage AI to provide deeper insights and drive better business decisions."
+              title="Predictive Analytics"
+              description="Transform your business decisions with AI analytics customized for East African markets, forecasting trends specific to Kenya's economic environment."
               icon={<BarChart4 className="h-6 w-6" />}
               link="/services"
               features={[
-                "Interactive visualization tools",
-                "Automated reporting systems",
-                "Decision support systems"
+                "Kenyan market insights",
+                "Local trend forecasting",
+                "East African data analysis"
               ]}
             />
             
             <ServiceCard
-              title="AI UI/UX Design"
-              description="User-centered design services for AI applications that ensure intuitive and effective user experiences."
+              title="ML Model Development"
+              description="Custom machine learning solutions developed in Nairobi that integrate seamlessly with your existing systems and provide actionable insights for Kenyan businesses."
+              icon={<Code className="h-6 w-6" />}
+              link="/services"
+              features={[
+                "Locally trained models",
+                "Kenyan data optimization",
+                "Industry-specific solutions"
+              ]}
+            />
+            
+            <ServiceCard
+              title="Natural Language Processing"
+              description="Our NLP solutions understand Swahili, Sheng, and other Kenyan languages, enabling sentiment analysis and automated translation services for local markets."
+              icon={<Cpu className="h-6 w-6" />}
+              link="/services"
+              features={[
+                "Swahili & Sheng support",
+                "Kenyan sentiment analysis",
+                "Local content generation"
+              ]}
+            />
+            
+            <ServiceCard
+              title="Data Analytics Platform"
+              description="Transform your raw data into valuable business intelligence with advanced analytics solutions designed specifically for the Kenyan market context."
+              icon={<Database className="h-6 w-6" />}
+              link="/services"
+              features={[
+                "Kenya-specific datasets",
+                "Local market benchmarks",
+                "East African insights"
+              ]}
+            />
+            
+            <ServiceCard
+              title="AI Interface Design"
+              description="User-centered design services for AI applications that ensure intuitive experiences tailored for Kenyan users and local business workflows."
               icon={<PenTool className="h-6 w-6" />}
               link="/services"
               features={[
-                "AI interface design",
-                "User journey optimization",
-                "Accessible AI interactions"
+                "Kenyan user research",
+                "Local UX patterns",
+                "Culturally relevant design"
               ]}
             />
           </div>
@@ -127,33 +128,34 @@ const Index = () => {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              Client Success Stories
+              Kenyan Success Stories
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">What Our Clients Say</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">What Our Nairobi Clients Say</h2>
             <p className="text-lg text-muted-foreground mb-0 max-w-3xl mx-auto">
-              Don't just take our word for it. Here's what our clients have to say about working with us.
+              See how we've helped leading businesses across Kenya transform with our AI solutions.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <TestimonialCard
-              quote="SavannahPrime's AI solution completely transformed our customer service operations, reducing response times by 70% and increasing customer satisfaction."
+              quote="SavannahPrime's AI chatbot with Swahili support completely transformed our customer service operations, reducing response times by 70% and increasing satisfaction among our Kenyan customers."
               name="David Kamau"
-              company="TechSolutions Ltd"
+              company="TechSolutions Nairobi"
               rating={5}
             />
             
             <TestimonialCard
-              quote="The automated data analytics platform they built has given us insights we never thought possible. Our decision-making is faster and more accurate now."
+              quote="The automated data analytics platform they built has given us insights into the Kenyan retail market we never thought possible. Our decision-making is faster and more accurate now."
               name="Sarah Wanjiku"
               company="RetailMaster Kenya"
               rating={5}
+              image="/public/lovable-uploads/Alex.jpg"
             />
             
             <TestimonialCard
-              quote="Working with SavannahPrime was seamless. Their AI integration with our existing systems was smooth, and the results have exceeded our expectations."
+              quote="Working with SavannahPrime's Nairobi team was seamless. Their AI integration with M-Pesa and our existing systems was smooth, and the results have exceeded our expectations."
               name="Michael Odhiambo"
-              company="Media Insights"
+              company="Media Insights East Africa"
               rating={4}
             />
           </div>
@@ -164,7 +166,7 @@ const Index = () => {
               className="inline-flex items-center text-primary hover:underline"
             >
               <MessageSquare className="mr-2 h-4 w-4" />
-              Read more reviews or share your experience
+              See more success stories from across Kenya
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>
@@ -175,15 +177,15 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5 border-y border-primary/10">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business with AI?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Kenyan Business with AI?</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let's discuss how our AI and automation solutions can help your business unlock new opportunities and drive growth.
+              Let's discuss how our Nairobi-based AI and automation solutions can help your business unlock new opportunities in the East African market.
             </p>
             <Link
               to="/contact"
               className="button-hover-effect bg-primary text-white px-8 py-3 rounded-md font-medium text-lg hover:shadow-lg hover:shadow-primary/20 transition-all inline-block"
             >
-              Schedule a Consultation
+              Book Your Free AI Consultation
             </Link>
           </div>
         </div>

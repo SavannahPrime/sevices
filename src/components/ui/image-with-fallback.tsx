@@ -32,6 +32,8 @@ const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
         className={cn("w-full h-full object-cover transition-opacity", 
           isLoading ? "opacity-0" : "opacity-100")}
         {...rest}
+        loading="lazy"
+        decoding="async"
       />
     </div>
   );

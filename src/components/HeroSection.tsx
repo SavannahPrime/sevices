@@ -22,7 +22,7 @@ const HeroSection = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
             >
               <Sparkles className="h-4 w-4" />
-              <span>Redefining AI & Automation</span>
+              <span>Nairobi's Premier AI Solutions</span>
             </motion.div>
             
             <motion.h1
@@ -31,7 +31,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             >
-              Transforming Business with <span className="gradient-text">AI Excellence</span>
+              Pioneering <span className="gradient-text">AI Solutions</span> for Kenya's Digital Transformation
             </motion.h1>
             
             <motion.p
@@ -40,9 +40,9 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg text-muted-foreground mb-8 max-w-2xl"
             >
-              SavannahPrime delivers cutting-edge AI solutions and intelligent automation 
-              that help businesses thrive in the digital era. Our technologies adapt, 
-              learn, and evolve to meet your unique challenges.
+              Based in Nairobi, SavannahPrime delivers cutting-edge AI solutions tailored specifically for Kenyan businesses. 
+              From SMEs to enterprise-level organizations across East Africa, our locally-developed technologies drive 
+              efficiency, growth, and innovation with Swahili language support.
             </motion.p>
             
             <motion.div
@@ -55,13 +55,13 @@ const HeroSection = () => {
                 to="/contact"
                 className="button-hover-effect bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium transition-all hover:shadow-lg hover:shadow-primary/20 text-center"
               >
-                Get Started
+                Book Your Free AI Consultation
               </Link>
               <Link
                 to="/services"
                 className="border border-border hover:border-primary px-6 py-3 rounded-md font-medium transition-colors flex items-center justify-center gap-2 group text-center"
               >
-                Explore AI Solutions
+                Explore AI Solutions for Kenya
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </motion.div>
@@ -81,7 +81,7 @@ const HeroSection = () => {
                 <div className="absolute -bottom-16 -left-16 w-32 h-32 bg-accent/20 rounded-full blur-3xl"></div>
                 
                 <div className="flex items-center justify-between mb-6">
-                  <span className="text-sm font-semibold text-muted-foreground">AI Platform</span>
+                  <span className="text-sm font-semibold text-muted-foreground">Kenyan AI Platform</span>
                   <div className="flex gap-1">
                     <span className="h-2 w-2 rounded-full bg-red-500"></span>
                     <span className="h-2 w-2 rounded-full bg-yellow-500"></span>
@@ -96,7 +96,7 @@ const HeroSection = () => {
                     transition={{ duration: 0.3, delay: 0.6 }}
                     className="text-primary mb-2"
                   >
-                    {"> "}initAI(client)
+                    {"> "}initAI(client, "Nairobi")
                   </motion.div>
                   
                   <motion.div
@@ -105,7 +105,7 @@ const HeroSection = () => {
                     transition={{ duration: 0.3, delay: 1 }}
                     className="text-muted-foreground mb-2"
                   >
-                    {"> "}Initializing AI model...
+                    {"> "}Initializing AI model with Kenyan data...
                   </motion.div>
                   
                   <motion.div
@@ -114,7 +114,7 @@ const HeroSection = () => {
                     transition={{ duration: 0.3, delay: 1.4 }}
                     className="text-muted-foreground mb-2"
                   >
-                    {"> "}Loading client data...
+                    {"> "}Loading Swahili language support...
                   </motion.div>
                   
                   <motion.div
@@ -123,7 +123,7 @@ const HeroSection = () => {
                     transition={{ duration: 0.3, delay: 1.8 }}
                     className="text-secondary mb-2"
                   >
-                    {"> "}Data loaded successfully! 
+                    {"> "}M-Pesa integration complete!
                   </motion.div>
                   
                   <motion.div
@@ -132,7 +132,7 @@ const HeroSection = () => {
                     transition={{ duration: 0.3, delay: 2.2 }}
                     className="text-accent mb-2"
                   >
-                    {"> "}AI model ready. Awaiting instructions...
+                    {"> "}AI model ready for Kenyan market analysis...
                   </motion.div>
                   
                   <motion.div
@@ -163,12 +163,12 @@ const HeroSection = () => {
               viewport={{ once: true }}
               className="text-muted-foreground"
             >
-              Trusted by innovative companies
+              Trusted by leading Kenyan companies
             </motion.p>
           </div>
           
           <div className="flex flex-wrap justify-center gap-x-12 gap-y-8">
-            {['Microsoft', 'IBM', 'Google', 'Amazon', 'Safaricom', 'Equity'].map((company, idx) => (
+            {['Safaricom', 'Equity Bank', 'KCB Group', 'Nation Media', 'Jumia Kenya', 'M-KOPA'].map((company, idx) => (
               <motion.div
                 key={company}
                 initial={{ opacity: 0, y: 20 }}
