@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { Menu, X, Cpu } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import BookingButton from './BookingButton';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,6 +77,7 @@ const Navbar = () => {
               {item.name}
             </Link>
           ))}
+          <ThemeToggle />
           <Link
             to="/contact"
             className="button-hover-effect bg-primary text-white px-5 py-2.5 rounded-md font-medium transition-all hover:shadow-lg hover:shadow-primary/20"
@@ -86,35 +88,38 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="relative z-10 md:hidden focus:outline-none"
-          aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
-        >
-          <AnimatePresence mode="wait">
-            {isMenuOpen ? (
-              <motion.div
-                key="close"
-                initial={{ opacity: 0, rotate: -90 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: 90 }}
-                transition={{ duration: 0.2 }}
-              >
-                <X className="h-6 w-6 text-foreground" />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="menu"
-                initial={{ opacity: 0, rotate: 90 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: -90 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Menu className="h-6 w-6 text-foreground" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle variant="icon" />
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="relative z-10 focus:outline-none"
+            aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
+          >
+            <AnimatePresence mode="wait">
+              {isMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ opacity: 0, rotate: -90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X className="h-6 w-6 text-foreground" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ opacity: 0, rotate: 90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: -90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu className="h-6 w-6 text-foreground" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </button>
+        </div>
 
         {/* Mobile Navigation */}
         <AnimatePresence>

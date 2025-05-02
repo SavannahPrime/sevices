@@ -13,6 +13,15 @@ import ServiceCard from '@/components/ServiceCard';
 import { Cpu, Code, Database, BarChart4, PenTool, MessageSquare as MessageIcon } from 'lucide-react';
 import ImageWithFallback from '@/components/ui/image-with-fallback';
 
+const serviceImages = {
+  chatbot: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=600&q=80",
+  analytics: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
+  ml: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80",
+  nlp: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=600&q=80",
+  data: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=600&q=80",
+  design: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+};
+
 const Index = () => {
   return (
     <PageTransition>
@@ -52,6 +61,8 @@ const Index = () => {
                 "M-Pesa integration",
                 "WhatsApp compatibility"
               ]}
+              image={serviceImages.chatbot}
+              imageAlt="AI chatbot interface with Swahili language capabilities"
             />
             
             <ServiceCard
@@ -64,6 +75,8 @@ const Index = () => {
                 "Local trend forecasting",
                 "East African data analysis"
               ]}
+              image={serviceImages.analytics}
+              imageAlt="Data visualization showing Kenyan market analytics"
             />
             
             <ServiceCard
@@ -76,6 +89,8 @@ const Index = () => {
                 "Kenyan data optimization",
                 "Industry-specific solutions"
               ]}
+              image={serviceImages.ml}
+              imageAlt="Machine learning code visualization with Kenyan data"
             />
             
             <ServiceCard
@@ -88,6 +103,8 @@ const Index = () => {
                 "Kenyan sentiment analysis",
                 "Local content generation"
               ]}
+              image={serviceImages.nlp}
+              imageAlt="Language processing visualization with Swahili text"
             />
             
             <ServiceCard
@@ -100,6 +117,8 @@ const Index = () => {
                 "Local market benchmarks",
                 "East African insights"
               ]}
+              image={serviceImages.data}
+              imageAlt="Data analytics dashboard with Kenyan market metrics"
             />
             
             <ServiceCard
@@ -112,6 +131,8 @@ const Index = () => {
                 "Local UX patterns",
                 "Culturally relevant design"
               ]}
+              image={serviceImages.design}
+              imageAlt="AI interface design for Kenyan applications"
             />
           </div>
         </div>
@@ -149,7 +170,7 @@ const Index = () => {
               name="Sarah Wanjiku"
               company="RetailMaster Kenya"
               rating={5}
-              image="/public/lovable-uploads/Alex.jpg"
+              image="/lovable-uploads/Alex.jpg"
             />
             
             <TestimonialCard

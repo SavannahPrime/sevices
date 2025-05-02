@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import HeroGradient from './HeroGradient';
 import ParticleBackground from './ParticleBackground';
+import ImageWithFallback from './ui/image-with-fallback';
 
 const HeroSection = () => {
   return (
@@ -87,6 +88,15 @@ const HeroSection = () => {
                     <span className="h-2 w-2 rounded-full bg-yellow-500"></span>
                     <span className="h-2 w-2 rounded-full bg-green-500"></span>
                   </div>
+                </div>
+                
+                <div className="rounded-lg overflow-hidden mb-6">
+                  <ImageWithFallback
+                    src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80"
+                    alt="AI technology visualization"
+                    className="w-full h-48 rounded-lg"
+                    objectFit="cover"
+                  />
                 </div>
                 
                 <div className="font-code text-sm">
@@ -175,7 +185,7 @@ const HeroSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="text-muted-foreground/50 text-xl font-semibold"
+                className="text-muted-foreground/50 text-xl font-semibold flex items-center"
               >
                 {company}
               </motion.div>

@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import ImageWithFallback from '@/components/ui/image-with-fallback';
 
 interface ServiceCardProps {
   title: string;
@@ -14,6 +15,8 @@ interface ServiceCardProps {
   isAnimated?: boolean;
   delay?: number;
   features?: string[];
+  image?: string;
+  imageAlt?: string;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ 
@@ -24,7 +27,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   className,
   isAnimated = true,
   delay = 0,
-  features = []
+  features = [],
+  image,
+  imageAlt
 }) => {
   return (
     <motion.div 
@@ -39,6 +44,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       )}
     >
       <div className="absolute h-1 w-0 bg-gradient-to-r from-primary via-secondary to-accent top-0 left-0 transition-all duration-500 group-hover:w-full"></div>
+      
+      {image && (
+        <div className="mb-6 rounded-md overflow-hidden aspect-video">
+          <ImageWithFallback
+            src={image}
+            alt={imageAlt || title}
+            className="w-full h-full transition-transform duration-500 group-hover:scale-110"
+            objectFit="cover"
+          />
+        </div>
+      )}
       
       <div className="p-3 rounded-md bg-primary/10 w-fit mb-6 text-primary group-hover:bg-primary/20 transition-all duration-300">
         {icon}
