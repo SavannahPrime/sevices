@@ -1,9 +1,10 @@
 
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, FolderKanban } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 import ContactInfo from '@/components/contact/ContactInfo';
 import ContactForm from '@/components/contact/ContactForm';
 import BookingButton from '@/components/BookingButton';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
   return (
@@ -28,6 +29,13 @@ const Contact = () => {
                 Email Us
               </a>
               <BookingButton variant="secondary" size="lg" />
+              <Link 
+                to="/projects" 
+                className="button-hover-effect px-6 py-3 rounded-md font-medium border border-primary/30 text-primary hover:bg-primary hover:text-white transition-all flex items-center justify-center"
+              >
+                <FolderKanban className="h-5 w-5 mr-2" />
+                View Portfolio
+              </Link>
             </div>
           </div>
         </div>
@@ -99,6 +107,13 @@ const Contact = () => {
                 Email Us
               </a>
               <BookingButton variant="secondary" size="lg" />
+              <Link 
+                to="/projects" 
+                className="button-hover-effect px-6 py-3 rounded-md font-medium border border-primary/30 text-primary hover:bg-primary hover:text-white transition-all flex items-center justify-center"
+              >
+                <FolderKanban className="h-5 w-5 mr-2" />
+                Portfolio
+              </Link>
             </div>
           </div>
         </div>

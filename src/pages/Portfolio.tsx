@@ -133,7 +133,7 @@ const Portfolio = () => {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Our Portfolio
+              Our Projects
             </h1>
             <p className="text-lg text-muted-foreground mb-0 max-w-2xl mx-auto">
               Explore our successful projects and see how we've helped businesses transform their digital presence.
