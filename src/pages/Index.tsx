@@ -14,12 +14,12 @@ import { Cpu, Code, Database, BarChart4, PenTool, MessageSquare as MessageIcon }
 import ImageWithFallback from '@/components/ui/image-with-fallback';
 
 const serviceImages = {
-  chatbot: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=600&q=80",
-  analytics: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
-  ml: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80",
-  nlp: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=600&q=80",
-  data: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=600&q=80",
-  design: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+  chatbot: "https://images.unsplash.com/photo-1677442135968-6d89bf90052d?auto=format&fit=crop&w=600&q=80",
+  analytics: "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=600&q=80",
+  ml: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80",
+  nlp: "https://images.unsplash.com/photo-1677442133472-276f26324f04?auto=format&fit=crop&w=600&q=80",
+  data: "https://images.unsplash.com/photo-1655720033654-a4239dd42d10?auto=format&fit=crop&w=600&q=80",
+  design: "https://images.unsplash.com/photo-1669570094762-828f3dfaf675?auto=format&fit=crop&w=600&q=80",
 };
 
 const Index = () => {
@@ -35,18 +35,26 @@ const Index = () => {
       <FeaturesSection />
       
       {/* Services Section */}
-      <section className="section bg-background">
-        <div className="container-custom">
+      <section className="section bg-background relative">
+        <div className="absolute inset-0 z-0">
+          <ImageWithFallback 
+            src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=2000&q=80"
+            alt="Tech background"
+            className="w-full h-full object-cover opacity-5"
+          />
+        </div>
+        
+        <div className="container-custom relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              AI Solutions for Kenya
+              Enterprise AI Solutions
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              AI & Automation <span className="gradient-text">Services</span> for East African Businesses
+              Advanced <span className="gradient-text">AI Services</span> for Business Growth
             </h2>
             <p className="text-lg text-muted-foreground mb-0 max-w-3xl mx-auto">
-              We offer comprehensive AI and automation solutions tailored specifically for 
-              the Kenyan market, helping local businesses stay competitive in the digital era.
+              We deliver intelligent solutions tailored for the East African market,
+              helping organizations leverage AI for competitive advantage.
             </p>
           </div>
           
@@ -145,13 +153,21 @@ const Index = () => {
       <ProcessSection />
       
       {/* Testimonials Section */}
-      <section className="section bg-background">
-        <div className="container-custom">
+      <section className="section bg-background relative">
+        <div className="absolute inset-0 z-0">
+          <ImageWithFallback 
+            src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=2000&q=80"
+            alt="Tech pattern background"
+            className="w-full h-full object-cover opacity-5"
+          />
+        </div>
+        
+        <div className="container-custom relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              Kenyan Success Stories
+              Client Success Stories
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">What Our Nairobi Clients Say</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">What Our Clients Say</h2>
             <p className="text-lg text-muted-foreground mb-0 max-w-3xl mx-auto">
               See how we've helped leading businesses across Kenya transform with our AI solutions.
             </p>
@@ -195,18 +211,27 @@ const Index = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5 border-y border-primary/10">
-        <div className="container-custom">
+      <section className="py-20 relative overflow-hidden border-y border-primary/10">
+        <div className="absolute inset-0 z-0">
+          <ImageWithFallback 
+            src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=2000&q=80"
+            alt="Tech pattern background"
+            className="w-full h-full object-cover opacity-10"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5"></div>
+        </div>
+        
+        <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Kenyan Business with AI?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business with AI?</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let's discuss how our Nairobi-based AI and automation solutions can help your business unlock new opportunities in the East African market.
+              Let's discuss how our AI and automation solutions can help your business unlock new opportunities in the East African market.
             </p>
             <Link
               to="/contact"
               className="button-hover-effect bg-primary text-white px-8 py-3 rounded-md font-medium text-lg hover:shadow-lg hover:shadow-primary/20 transition-all inline-block"
             >
-              Book Your Free AI Consultation
+              Schedule a Free Consultation
             </Link>
           </div>
         </div>
