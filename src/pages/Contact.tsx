@@ -1,5 +1,5 @@
 
-import { Mail, Phone, FolderKanban } from 'lucide-react';
+import { Mail, Phone, FolderKanban, Users } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 import ContactInfo from '@/components/contact/ContactInfo';
 import ContactForm from '@/components/contact/ContactForm';
@@ -35,6 +35,13 @@ const Contact = () => {
               >
                 <FolderKanban className="h-5 w-5 mr-2" />
                 View Portfolio
+              </Link>
+              <Link 
+                to="/team" 
+                className="button-hover-effect px-6 py-3 rounded-md font-medium bg-secondary text-foreground hover:bg-primary hover:text-white transition-all flex items-center justify-center"
+              >
+                <Users className="h-5 w-5 mr-2" />
+                Meet Our Team
               </Link>
             </div>
           </div>
@@ -113,6 +120,13 @@ const Contact = () => {
               >
                 <FolderKanban className="h-5 w-5 mr-2" />
                 Portfolio
+              </Link>
+              <Link 
+                to="/team" 
+                className="button-hover-effect px-6 py-3 rounded-md font-medium border border-primary/30 text-primary hover:bg-primary hover:text-white transition-all flex items-center justify-center"
+              >
+                <Users className="h-5 w-5 mr-2" />
+                Our Team
               </Link>
             </div>
           </div>

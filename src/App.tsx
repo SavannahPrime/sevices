@@ -18,6 +18,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Chatbot from "./components/Chatbot";
 import DynamicPricing from "./pages/DynamicPricing";
+import Team from "./pages/Team";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
               <Route path="/blog" element={<Blog />} />
               <Route path="/reviews" element={<Reviews />} />
               <Route path="/dynamic-pricing" element={<DynamicPricing />} />
+              <Route path="/team" element={<Team />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

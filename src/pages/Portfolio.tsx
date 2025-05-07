@@ -1,8 +1,10 @@
+
 import { useState, useEffect } from 'react';
 import PageTransition from '@/components/PageTransition';
 import PortfolioItem from '@/components/PortfolioItem';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 
 // Sample portfolio data
 const portfolioData = [
@@ -83,28 +85,6 @@ const portfolioData = [
 // Extract unique categories for the filter
 const categories = ["All", ...new Set(portfolioData.map(item => item.category))];
 
-// Team Members Data
-const teamData = [
-  {
-    id: 1,
-    name: "Fredrick Saruni",
-    role: "Founder & CEO",
-    bio: "Visionary AI entrepreneur and tech innovator with expertise in machine learning and web development.",
-    imageUrl: "/lovable-uploads/0b78033a-2f9f-4d1f-bfae-08c84c8ba8f2.png",
-    category: "Leadership",
-    link: "#"
-  },
-  {
-    id: 2,
-    name: "Alex Weru",
-    role: "Product Manager & UI/UX Designer",
-    bio: "Expert in crafting user-centric designs and managing product lifecycles to deliver exceptional user experiences.",
-    imageUrl: "/public/lovable-uploads/Alex.jpg", // Add the image here
-    category: "Design",
-    link: "#"
-  }
-];
-
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredProjects, setFilteredProjects] = useState(portfolioData);
@@ -138,34 +118,12 @@ const Portfolio = () => {
             <p className="text-lg text-muted-foreground mb-0 max-w-2xl mx-auto">
               Explore our successful projects and see how we've helped businesses transform their digital presence.
             </p>
-          </div>
-        </div>
-      </section>
-      
-      {/* Team Section */}
-      <section className="py-16 bg-secondary/30 border-b border-border">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Meet Our Team</h2>
-            <p className="text-muted-foreground">
-              The brilliant minds behind our innovative AI solutions and web development expertise.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {teamData.map((member, index) => (
-              <PortfolioItem
-                key={member.id}
-                title={member.name}
-                description={member.bio}
-                imageUrl={member.imageUrl}
-                category={member.category}
-                link={member.link}
-                delay={index}
-                isProfile={true}
-                role={member.role}
-              />
-            ))}
+            <div className="mt-8 flex justify-center">
+              <Link to="/team" className="button-hover-effect px-6 py-3 rounded-md font-medium bg-primary text-white hover:shadow-lg hover:shadow-primary/20 transition-all flex items-center justify-center">
+                <Users className="h-5 w-5 mr-2" />
+                Meet Our Team
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -447,12 +405,20 @@ const Portfolio = () => {
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
               Let's discuss how we can help bring your vision to life with our web development and AI automation expertise.
             </p>
-            <a
-              href="/contact"
-              className="bg-primary text-white px-8 py-3 rounded-md font-medium transition-all hover:shadow-lg hover:shadow-primary/20 inline-block"
-            >
-              Contact Us Today
-            </a>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                to="/contact"
+                className="bg-primary text-white px-8 py-3 rounded-md font-medium transition-all hover:shadow-lg hover:shadow-primary/20"
+              >
+                Contact Us Today
+              </Link>
+              <Link
+                to="/team"
+                className="border border-primary/30 text-primary px-8 py-3 rounded-md font-medium transition-all hover:bg-primary hover:text-white"
+              >
+                Meet Our Team
+              </Link>
+            </div>
           </div>
         </div>
       </section>
