@@ -1,9 +1,7 @@
-// filepath: /workspaces/sevices/static.json
+
 {
-  "routes": [
-    {
-      "src": "/.*",
-      "dest": "/index.html"
-    }
-  ]
+  "root": "dist",
+  "routes": {
+    "/**": "index.html"
+  }
 }
