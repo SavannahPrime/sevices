@@ -177,7 +177,7 @@ const Team = () => {
                             )}
                             {member.socialLinks.github && (
                               <a href={member.socialLinks.github} target="_blank" rel="noopener noreferrer" aria-label={`${member.name}'s GitHub profile`} className="p-2 rounded-full hover:bg-secondary transition-colors">
-                                <GitHub className="h-4 w-4" />
+                                <Github className="h-4 w-4" />
                               </a>
                             )}
                             {member.socialLinks.email && (
