@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { GitHub, Linkedin, Mail, Users, Twitter } from 'lucide-react';
+import { Github, Linkedin, Mail, Users, Twitter } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 import ImageWithFallback from '@/components/ui/image-with-fallback';
 import { Card, CardContent } from '@/components/ui/card';

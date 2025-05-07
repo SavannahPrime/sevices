@@ -1,10 +1,10 @@
-
 import { useState, useEffect } from 'react';
 import PageTransition from '@/components/PageTransition';
 import PortfolioItem from '@/components/PortfolioItem';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import { Users } from 'lucide-react';
 
 // Sample portfolio data
 const portfolioData = [
